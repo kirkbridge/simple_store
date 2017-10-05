@@ -6,7 +6,9 @@
     <p>Chunky Bacon</p>
 <%end%> -->
 <h2>Product Stats</h2>
-
+<p>There are <%= @products.count %> unique products in our inventory.</p>
+<p>The average price of our products is <%= "#{format('$%.2f', @products.average(:price))}" %>.</p>
+<p>We currently have <%= @products.sum(:stock_quantity) %> items in our inventory. Please buy something my Mom's garage is getting full.</p>
 <table>
   <thead>
     <tr>
@@ -23,7 +25,7 @@
       <tr>
         <td><%= product.name %></td>
         <td><%= product.description %></td>
-        <td><%= product.price %></td>
+        <td><%= "#{format('$%.2f', product.price)}" %></td>
         <td><%= product.stock_quantity %></td>
         <td><%= link_to 'Show', product %></td>
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
